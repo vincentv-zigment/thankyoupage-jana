@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Successful</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0B14;
+    --bg-soft: #12121F;
+    --card: #FFFFFF;
+    --text-main: #101018;
+    --text-muted: #6B6B7B;
+    --accent-1: #EC008C;
+    --accent-2: #C2007A;
+    --accent-glow: rgba(236, 0, 140, 0.35);
+    --success: #22C55E;
+    --border: #EDEDF3;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html, body{
+    height:100%;
+  }
+
+  body{
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(236,0,140,0.08), transparent 42%),
+      radial-gradient(circle at 85% 92%, rgba(236,0,140,0.06), transparent 42%),
+      #F4F5F8;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 24px;
+    color: var(--text-main);
+  }
+
+  .page{
+    width:100%;
+    max-width: 480px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 28px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .brand-mark{
+    width:30px; height:30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 6px 18px var(--accent-glow);
+  }
+
+  .brand-mark svg{ width:16px; height:16px; }
+
+  .brand-name{
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: #101018;
+  }
+
+  .card{
+    width:100%;
+    background: var(--card);
+    border-radius: 24px;
+    padding: 44px 32px 36px;
+    text-align:center;
+    border: 1px solid rgba(236, 0, 140, 0.10);
+    box-shadow:
+      0 1px 2px rgba(16,16,24,0.04),
+      0 12px 28px -8px rgba(16,16,24,0.12),
+      0 30px 60px -24px rgba(236,0,140,0.18);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .card::before{
+    content:"";
+    position:absolute;
+    top:-60px; left:50%;
+    transform: translateX(-50%);
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+    pointer-events:none;
+  }
+
+  .check-wrap{
+    position:relative;
+    width: 92px; height: 92px;
+    margin: 0 auto 28px;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .check-ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    opacity: 0.12;
+    animation: pulseRing 2.2s ease-out infinite;
+  }
+
+  @keyframes pulseRing{
+    0%{ transform: scale(0.85); opacity:0.25; }
+    70%{ transform: scale(1.25); opacity:0; }
+    100%{ transform: scale(1.25); opacity:0; }
+  }
+
+  .check-circle{
+    position:relative;
+    width: 72px; height: 72px;
+    border-radius:50%;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 10px 24px var(--accent-glow);
+    animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+
+  @keyframes popIn{
+    0%{ transform: scale(0); opacity:0; }
+    100%{ transform: scale(1); opacity:1; }
+  }
+
+  .check-circle svg{
+    width: 34px; height: 34px;
+  }
+
+  .check-path{
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: drawCheck 0.5s 0.35s ease forwards;
+  }
+
+  @keyframes drawCheck{
+    to{ stroke-dashoffset: 0; }
+  }
+
+  h1{
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: var(--text-main);
+  }
+
+  .subtitle{
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 360px;
+    margin: 0 auto 28px;
+  }
+
+  .details{
+    background: #F8F8FC;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    text-align:left;
+    margin-bottom: 28px;
+  }
+
+  .details-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 9px 0;
+  }
+
+  .details-row + .details-row{
+    border-top: 1px solid var(--border);
+  }
+
+  .details-label{
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .details-value{
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  .status-dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background: var(--success);
+    display:inline-block;
+  }
+
+  .cta{
+    display:block;
+    width:100%;
+    text-decoration:none;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color:#fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border:none;
+    cursor:pointer;
+    box-shadow: 0 12px 24px -8px var(--accent-glow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 16px 30px -8px var(--accent-glow);
+  }
+
+  .cta:active{
+    transform: translateY(0);
+  }
+
+  .footnote{
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .footnote a{
+    color: var(--accent-1);
+    font-weight: 600;
+    text-decoration:none;
+  }
+
+  .powered{
+    font-size: 12px;
+    color: #7A7A90;
+    text-align:center;
+  }
+
+  .powered b{
+    color: #C9C6FF;
+  }
+
+  @media (max-width: 420px){
+    .card{
+      padding: 36px 22px 30px;
+      border-radius: 20px;
+    }
+    h1{ font-size: 21px; }
+    .subtitle{ font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M4 12L10 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="brand-name">Jana Small Finance Bank</span>
+    </div>
+
+    <div class="card">
+
+      <div class="check-wrap">
+        <div class="check-ring"></div>
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path class="check-path" d="M5 13L9.5 17.5L19 7" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <h1>eKYC Verification Successful</h1>
+      <p class="subtitle">
+        Your identity has been verified successfully.
+      </p>
+
+      <div class="details">
+        <div class="details-row">
+          <span class="details-label">Verification Status</span>
+          <span class="details-value"><span class="status-dot"></span>Verified</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Completed On</span>
+          <span class="details-value" id="completedOn">--</span>
+        </div>
+      </div>
+
+      <a class="cta" href="https://wa.me/" id="ctaBtn">Continue on WhatsApp</a>
+
+      <p class="footnote">Need help? <a href="https://www.jana.bank.in/contact-us/" target="_blank" rel="noopener">Contact Support</a></p>
+    </div>
+
+  </div>
+
+  <script>
+    // Populate reference ID and timestamp dynamically (e.g. from URL params)
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      const waLink = params.get('wa_link');
+
+      if (waLink) {
+        document.getElementById('ctaBtn').setAttribute('href', waLink);
+      }
+
+      const now = new Date();
+      document.getElementById('completedOn').textContent = now.toLocaleDateString('en-IN', {
+        day: '2-digit', month: 'short', year: 'numeric'
+      }) + ', ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+    })();
+  </script>
+
+</body>
+</html>
